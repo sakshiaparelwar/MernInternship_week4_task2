@@ -1,0 +1,46 @@
+h1 {
+  text-align: center;
+}
+
+#display {
+  display: flex;
+  flex-direction: column;
+  margin: 0px auto;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  max-width: 500px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#display p {
+  display: inline;
+  margin: 10px 0;
+  padding: 3px;
+}
+
+#output {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  text-align: center;
+  margin: auto;
+  padding-top: 20px;
+  width: 50vmax;
+  border-bottom: 3px solid rgba(255, 16, 16, 0.226);
+}
+
+button {
+  display: block;
+  margin: 15px auto;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(124, 75, 170);
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: rgb(91, 91, 201);
+}

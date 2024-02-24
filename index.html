@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Employee Management System</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Employee Management System</h1>
+    <div id="display"></div>
+    <div id="output"></div>
+    <button onclick="average()">Calculate average of Salary</button>
+    <button onclick="findEmployeesByDepartment('HR')">Find Employees</button>
+    <button onclick="increaseSalary(10)">Increase Salaries by 10%</button>
+    <button onclick="sortEmployeesByAge()">Sort Employees by ages</button>
+  </body>
+  <script>
+    function Employee(name, age, department, salary) {
+      this.name = name;
+      this.age = age;
+      this.department = department;
+      this.salary = salary;
+    }
+
+    const employees = [
+      new Employee("Raju", 22, "Marketing", 45000),
+      new Employee("Minu", 28, "HR", 15000),
+      new Employee("Akshay", 32, "IT", 88000),
+      new Employee("Keshav", 25, "HR", 40000),
+    ];
+
+    const display = document.getElementById("display");
+
+    employees.forEach((employee) => {
+      const para = document.createElement("p");
+      para.innerHTML = `<p>Name:<p/>${employee.name},
+        <p>Age:<p/>${employee.age},
+        <p>Department:<p/>${employee.department},
+        <p>Salary:<p/>${employee.salary}`;
+      display.appendChild(para);
+    });
+
+    function displayOutput(output) {
+      document.getElementById("output").innerHTML = output;
+    }
+
+    function average() {
+      let total = employees.reduce((acc, employee) => acc + employee.salary, 0);
+      let average = total / employees.length;
+      displayOutput(`Average Salaray is $${average.toFixed(2)}`);
+    }
+
+    function findEmployeesByDepartment(departmentname) {
+      let employeenames = employees.filter(
+        (employee) => employee.department === departmentname
+      );
+      let names = employeenames.map((employee) => employee.name);
+      displayOutput(`Employees in ${departmentname} Department are ${names}`);
+    }
+
+    function increaseSalary(percentage) {
+      employees.forEach((emp) => {
+        emp.salary += emp.salary * (percentage / 100);
+      });
+      displayOutput("Salaries increased successfully!");
+    }
+
+    function sortEmployeesByAge() {
+      employees.sort((a, b) => a.age - b.age);
+      let ages = employees.map((employee) => employee.name);
+      displayOutput(`Employees sorted by ages : ${ages}`);
+    }
+  </script>
+</html>
